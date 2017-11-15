@@ -7,9 +7,9 @@ import java.util.ArrayList;
  */
 
 public class LunchServing {
-    String day;
-    String lunchHours;
-    ArrayList<Dish> lunchMenu;
+    private String day;
+    private String lunchHours;
+    private ArrayList<Dish> lunchMenu;
 
     public LunchServing(String day, String lunchHours,ArrayList<Dish> lunchMenu){
         this.day = day;
@@ -17,7 +17,7 @@ public class LunchServing {
         this.lunchMenu = lunchMenu;
     }
 
-    ArrayList<Dish> lunchMenu(){
+    public ArrayList<Dish> lunchMenu(){
         return lunchMenu;
     }
 
