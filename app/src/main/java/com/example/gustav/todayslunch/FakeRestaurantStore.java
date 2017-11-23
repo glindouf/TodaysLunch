@@ -7,29 +7,28 @@ import java.util.ArrayList;
  */
 
 public class FakeRestaurantStore {
-    //public static FakeRestaurantStore fake;
+    private static FakeRestaurantStore fake;
     private ArrayList<Restaurant> restuarants = new ArrayList<Restaurant>();
     private ArrayList<LunchServing> lunchServings = new ArrayList<LunchServing>();
     private ArrayList<Dish> dishes = new ArrayList<Dish>();
-    private Dish d = new Dish("Carbonara",99,false);
-    /*{
+    static {
+        Dish d = new Dish("Carbonara",99,false);
         fake = new FakeRestaurantStore();
-        dishes.add(new Dish("Diavola",99,false));
-        dishes.add(d);
-        lunchServings.add(new LunchServing("Monday","11:00-14:00",dishes));
-        lunchServings.add(new LunchServing("Tuesday","11:00-14:00",dishes));
-        restuarants.add(new Restaurant("Mimolett","Lindholmenvägen 46", "03124224466",lunchServings ));
-    }*/
+        fake.dishes.add(new Dish("Diavola",99,false));
+        fake.dishes.add(d);
+        fake.lunchServings.add(new LunchServing("Monday","11:00-14:00",fake.dishes));
+        fake.lunchServings.add(new LunchServing("Tuesday","11:00-14:00",fake.dishes));
+        fake.restuarants.add(new Restaurant("Mimolett","Lindholmenvägen 46", "03124224466",fake.lunchServings ));
+    }
 
-    public FakeRestaurantStore(){
+    public static FakeRestaurantStore getInstance() {
+        return fake;
+    }
+    private FakeRestaurantStore(){
     }
 
     public  ArrayList<Restaurant>getRestaurantInfo(){
-        dishes.add(new Dish("Diavola",99,false));
-        dishes.add(d);
-        lunchServings.add(new LunchServing("Monday","11:00-14:00",dishes));
-        lunchServings.add(new LunchServing("Tuesday","11:00-14:00",dishes));
-        restuarants.add(new Restaurant("Mimolett","Lindholmenvägen 46", "03124224466",lunchServings ));
+
         return restuarants;
     }
 

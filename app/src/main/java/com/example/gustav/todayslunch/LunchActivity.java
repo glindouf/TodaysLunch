@@ -38,7 +38,7 @@ public class LunchActivity extends AppCompatActivity {
 
     private ArrayList<String> convertRestaurantInfo(){
         ArrayList<String> menuItems = new ArrayList<String>();
-        FakeRestaurantStore fake = new FakeRestaurantStore();
+        FakeRestaurantStore fake = FakeRestaurantStore.getInstance();
         ArrayList<Restaurant> restaurants = fake.getRestaurantInfo();
         for (Restaurant r: restaurants) {
             menuItems.add(r.name());
