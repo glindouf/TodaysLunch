@@ -8,9 +8,9 @@ import android.widget.ArrayAdapter;
 
 public class lunch extends AppCompatActivity {
     ListView menu;
-    String[] menuItems = {"Monday","Crabonara","Pannbiff","Diavola", "Butterfingers",
+    String[] menuItems = {"måndag","Crabonara","Pannbiff","Diavola", "Butterfingers",
             "Tuesday", "Grillad fläskkarré","Husetsfiskgratäng", "Stektlax"};
-
+// hej
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
