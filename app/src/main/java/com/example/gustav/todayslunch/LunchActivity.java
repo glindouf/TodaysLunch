@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class LunchActivity extends AppCompatActivity {
     ListView menu;
+    String s = "Hi";
     /*String[] menuItems = {"måndag","Crabonara","Pannbiff","Diavola", "Butterfingers",
             "Tuesday", "Grillad fläskkarré","Husetsfiskgratäng", "Stektlax"};
     ArrayList<String> menuList = new ArrayList<>();*/
