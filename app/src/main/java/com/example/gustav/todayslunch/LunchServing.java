@@ -21,5 +21,13 @@ public class LunchServing {
         return lunchMenu;
     }
 
+    public String day(){
+        return day;
+    }
+
+    public String lunchHours(){
+        return lunchHours;
+    }
+
 
 }

@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 System.out.println("Hello!");
-                Intent myIntent = new Intent(MainActivity.this, lunch.class);
+                Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);
             }
         });
