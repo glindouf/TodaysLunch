@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 
 public class lunch extends AppCompatActivity {
     ListView menu;
+    String s = "Hej";
     String[] menuItems = {"måndag","Crabonara","Pannbiff","Diavola", "Butterfingers",
             "Tuesday", "Grillad fläskkarré","Husetsfiskgratäng", "Stektlax"};
 // hej
