@@ -9,25 +9,24 @@ import java.util.ArrayList;
 public class FakeRestaurantStore {
     private static FakeRestaurantStore fake;
     private ArrayList<Restaurant> restuarants = new ArrayList<Restaurant>();
-    private ArrayList<LunchServing> lunchServings = new ArrayList<LunchServing>();
-    private ArrayList<LunchServing> lunchs = new ArrayList<LunchServing>();
 
-
-    private ArrayList<Dish> dishes = new ArrayList<Dish>();
     static {
-        Dish d = new Dish("Carbonara",99,false);
+        ArrayList<Dish> mimolettDishes = new ArrayList<Dish>();
+        ArrayList<Dish> bistroDishes = new ArrayList<Dish>();
         fake = new FakeRestaurantStore();
-        fake.dishes.add(new Dish("Diavola",99,false));
-        fake.dishes.add(d);
-        fake.lunchServings.add(new LunchServing("Monday","11:00-14:00",fake.dishes));
-        fake.lunchServings.add(new LunchServing("Tuesday","11:00-14:00",fake.dishes));
-        fake.restuarants.add(new Restaurant("Mimolett","Lindholmenvägen 46", "03124224466",fake.lunchServings ));
+        mimolettDishes.add(new Dish("Diavola",99,false));
+        mimolettDishes.add(new Dish("Carbonara",99,false));
+        ArrayList<LunchServing> mimolettServings = new ArrayList<LunchServing>();
+        mimolettServings.add(new LunchServing("Monday","11:00-14:00",mimolettDishes));
+        mimolettServings.add(new LunchServing("Tuesday","11:00-14:00",mimolettDishes));
+        fake.restuarants.add(new Restaurant("Mimolett","Lindholmenvägen 46", "03124224466",mimolettServings));
 
-        fake.dishes.add(new Dish("Högrevsgryta a la Fredrik",90,false));
-        fake.dishes.add(new Dish("Permesanpanerad kålrot",90,true));
-        fake.lunchs.add(new LunchServing("Monday","11:00-14:00",fake.dishes));
-        fake.lunchs.add(new LunchServing("Tuesday","11:00-14:00",fake.dishes));
-        fake.restuarants.add(new Restaurant("Bistrot","Diagonalen 8", "031223323",fake.lunchs ));
+        bistroDishes.add(new Dish("Högrevsgryta a la Fredrik",90,false));
+        bistroDishes.add(new Dish("Permesanpanerad kålrot",90,true));
+        ArrayList<LunchServing> bistroServings= new ArrayList<LunchServing>();
+        bistroServings.add(new LunchServing("Monday","11:00-14:00",bistroDishes));
+        bistroServings.add(new LunchServing("Tuesday","11:00-14:00",bistroDishes));
+        fake.restuarants.add(new Restaurant("Bistrot","Diagonalen 8", "031223323",bistroServings ));
     }
 
     public static FakeRestaurantStore getInstance() {
