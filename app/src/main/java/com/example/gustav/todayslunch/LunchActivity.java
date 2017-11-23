@@ -13,11 +13,11 @@ import java.util.ArrayList;
 
 public class LunchActivity extends AppCompatActivity {
     ListView menu;
-    String s = "Hi";
-    /*String[] menuItems = {"måndag","Crabonara","Pannbiff","Diavola", "Butterfingers",
-            "Tuesday", "Grillad fläskkarré","Husetsfiskgratäng", "Stektlax"};
-    ArrayList<String> menuList = new ArrayList<>();*/
-// hej
+
+    private static String restaurant = null;
+    public static void setRestaurant(String rest){
+        restaurant = rest;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +40,18 @@ public class LunchActivity extends AppCompatActivity {
     private ArrayList<String> convertRestaurantInfo(){
         ArrayList<String> menuItems = new ArrayList<String>();
         FakeRestaurantStore fake = FakeRestaurantStore.getInstance();
-        ArrayList<Restaurant> restaurants = fake.getRestaurantInfo();
-        for (Restaurant r: restaurants) {
-            menuItems.add(r.name());
-            ArrayList<LunchServing> weekMenu = r.weekMenu();
-            for(LunchServing l : weekMenu){
-                String title = l.day() + " " + l.lunchHours();
-                menuItems.add(title);
-                ArrayList<Dish> lunchMenu = l.lunchMenu();
-                for(Dish d : lunchMenu) {
-                    menuItems.add(d.toString());
-                }
+        Restaurant r = fake.getRestaurantInfo(restaurant);
+        menuItems.add(r.name());
+        ArrayList<LunchServing> weekMenu = r.weekMenu();
+        for(LunchServing l : weekMenu){
+            String title = l.day() + " " + l.lunchHours();
+            menuItems.add(title);
+            ArrayList<Dish> lunchMenu = l.lunchMenu();
+            for(Dish d : lunchMenu) {
+                menuItems.add(d.toString());
             }
         }
+
         return menuItems;
     }
 }

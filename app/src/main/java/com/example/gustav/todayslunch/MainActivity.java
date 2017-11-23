@@ -47,11 +47,24 @@ public class MainActivity extends AppCompatActivity {
         mimolett.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Hello!");
+                System.out.println("Mimolett");
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);
+                LunchActivity.setRestaurant("Mimolett");
             }
         });
+
+        ImageButton bistrot = (ImageButton) findViewById(R.id.bistrot);
+        bistrot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("Bistrot");
+                Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
+                MainActivity.this.startActivity(myIntent);
+                LunchActivity.setRestaurant("Bistrot");
+            }
+        });
+
     }
 
 }

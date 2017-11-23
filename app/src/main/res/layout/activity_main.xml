@@ -28,6 +28,17 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/logga_mimolett"
         tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="112dp"
+
+        />
+
+    <ImageButton
+        android:id="@+id/bistrot"
+        android:layout_width="122dp"
+        android:layout_height="97dp"
+        android:layout_marginLeft="60dp"
+        app:layout_constraintLeft_toRightOf="@+id/mimolett"
+        app:srcCompat="@drawable/bistrotlogga"
         tools:layout_editor_absoluteY="112dp" />
 
 </android.support.constraint.ConstraintLayout>
