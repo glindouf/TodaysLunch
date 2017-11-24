@@ -10,47 +10,31 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+    //private TextView mTextMessage;
 
-    private TextView mTextMessage;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        //mTextMessage = (TextView) findViewById(R.id.message);
         ImageButton mimolett = (ImageButton) findViewById(R.id.mimolett);
         mimolett.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ArrayList<Restaurant> restaurants = Session.getInstance().store.getRestuarants();
+                Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Mimolett",restaurants);
                 System.out.println("Mimolett");
+                System.out.println(Session.getInstance().currentRestaurant.name());
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);
-                LunchActivity.setRestaurant("Mimolett");
             }
         });
 
@@ -58,10 +42,23 @@ public class MainActivity extends AppCompatActivity {
         bistrot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Bistrot");
+                ArrayList<Restaurant> restaurants = Session.getInstance().store.getRestuarants();
+                Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Bistrot",restaurants);
+                System.out.println(Session.getInstance().currentRestaurant.name());
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);
-                LunchActivity.setRestaurant("Bistrot");
+            }
+        });
+
+        ImageButton lsExpress = (ImageButton) findViewById(R.id.lsExpress);
+        lsExpress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<Restaurant> restaurants = Session.getInstance().store.getRestuarants();
+                Session.getInstance().currentRestaurant = Util.getRestaurantInfo("L's Express",restaurants);
+                System.out.println(Session.getInstance().currentRestaurant.name());
+                Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
+                MainActivity.this.startActivity(myIntent);
             }
         });
 

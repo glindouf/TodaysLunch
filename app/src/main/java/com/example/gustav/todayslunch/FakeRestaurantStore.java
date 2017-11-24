@@ -11,9 +11,8 @@ public class FakeRestaurantStore {
     private ArrayList<Restaurant> restuarants = new ArrayList<Restaurant>();
 
     static {
-        ArrayList<Dish> mimolettDishes = new ArrayList<Dish>();
-        ArrayList<Dish> bistroDishes = new ArrayList<Dish>();
         fake = new FakeRestaurantStore();
+        ArrayList<Dish> mimolettDishes = new ArrayList<Dish>();
         mimolettDishes.add(new Dish("Diavola",99,false));
         mimolettDishes.add(new Dish("Carbonara",99,false));
         ArrayList<LunchServing> mimolettServings = new ArrayList<LunchServing>();
@@ -21,27 +20,30 @@ public class FakeRestaurantStore {
         mimolettServings.add(new LunchServing("Tuesday","11:00-14:00",mimolettDishes));
         fake.restuarants.add(new Restaurant("Mimolett","Lindholmenvägen 46", "03124224466",mimolettServings));
 
+        ArrayList<Dish> bistroDishes = new ArrayList<Dish>();
         bistroDishes.add(new Dish("Högrevsgryta a la Fredrik",90,false));
         bistroDishes.add(new Dish("Permesanpanerad kålrot",90,true));
         ArrayList<LunchServing> bistroServings= new ArrayList<LunchServing>();
         bistroServings.add(new LunchServing("Monday","11:00-14:00",bistroDishes));
         bistroServings.add(new LunchServing("Tuesday","11:00-14:00",bistroDishes));
         fake.restuarants.add(new Restaurant("Bistrot","Diagonalen 8", "031223323",bistroServings ));
+
+        ArrayList<Dish> lsDishes = new ArrayList<Dish>();
+        lsDishes.add(new Dish("Ceasar Sallad",80,false));
+        lsDishes.add(new Dish("Pasta Gratäng",80,true));
+        ArrayList<LunchServing> lsServings= new ArrayList<LunchServing>();
+        lsServings.add(new LunchServing("Monday","11:00-14:00",lsDishes));
+        lsServings.add(new LunchServing("Tuesday","11:00-14:00",bistroDishes));
+        fake.restuarants.add(new Restaurant("L's Express","Lindholmspiren 5", "0317723950",bistroServings ));
     }
 
-    public static FakeRestaurantStore getInstance() {
+    public static FakeRestaurantStore  getInstance(){
         return fake;
     }
-    private FakeRestaurantStore(){
+
+    public ArrayList<Restaurant> getRestuarants(){
+        return restuarants;
     }
 
-    public Restaurant getRestaurantInfo(String restaurant) {
-        Restaurant rest = null;
-        for(Restaurant r : fake.restuarants){
-            if(r.name().equals(restaurant)){
-                rest = r;
-            }
-        }
-        return rest;
-    }
+
 }
