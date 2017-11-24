@@ -14,10 +14,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     //private TextView mTextMessage;
-
-
-
-
+     private ArrayList<Restaurant> restaurants = RestaurantStoreFactory.getRestaurantStore().getRestaurants();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         mimolett.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<Restaurant> restaurants = Session.getInstance().store.getRestuarants();
                 Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Mimolett",restaurants);
                 System.out.println("Mimolett");
                 System.out.println(Session.getInstance().currentRestaurant.name());
@@ -42,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         bistrot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<Restaurant> restaurants = Session.getInstance().store.getRestuarants();
                 Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Bistrot",restaurants);
                 System.out.println(Session.getInstance().currentRestaurant.name());
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
@@ -54,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         lsExpress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<Restaurant> restaurants = Session.getInstance().store.getRestuarants();
                 Session.getInstance().currentRestaurant = Util.getRestaurantInfo("L's Express",restaurants);
                 System.out.println(Session.getInstance().currentRestaurant.name());
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);

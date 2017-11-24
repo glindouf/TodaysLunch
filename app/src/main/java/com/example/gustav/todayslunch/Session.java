@@ -12,7 +12,7 @@ public class Session {
     public FakeRestaurantStore store;
     // private constructor to prevent other from creating Session objects
     private Session() {
-        store = FakeRestaurantStore.getInstance();
+
     };
 
     static {
