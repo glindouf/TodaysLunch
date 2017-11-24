@@ -35,6 +35,8 @@ public class FakeRestaurantStore implements RestaurantStore {
         lsServings.add(new LunchServing("Monday","11:00-14:00",lsDishes));
         lsServings.add(new LunchServing("Tuesday","11:00-14:00",lsDishes));
         fake.restaurants.add(new Restaurant("L's Express","Lindholmspiren 5", "0317723950",lsServings ));
+
+
     }
 
     public static FakeRestaurantStore  getInstance(){

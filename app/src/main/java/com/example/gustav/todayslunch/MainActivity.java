@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Bistrot",restaurants);
-                System.out.println(Session.getInstance().currentRestaurant.name());
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);
             }
@@ -50,12 +49,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Session.getInstance().currentRestaurant = Util.getRestaurantInfo("L's Express",restaurants);
-                System.out.println(Session.getInstance().currentRestaurant.name());
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);
             }
         });
 
+        ImageButton matMinnen = (ImageButton) findViewById(R.id.matMinnen);
+        matMinnen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Mat Minnen",restaurants);
+                Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
     }
 
 }
