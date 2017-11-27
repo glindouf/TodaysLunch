@@ -44,7 +44,7 @@
         android:layout_marginTop="28dp"
         android:scaleType="fitXY"
         app:layout_constraintTop_toBottomOf="@+id/mimolett"
-        app:srcCompat="@drawable/matminnen"
+        app:srcCompat="@drawable/matminnen_logga"
         tools:layout_editor_absoluteX="16dp" />
 
     <ImageButton
@@ -56,7 +56,7 @@
         android:scaleType="fitXY"
         app:layout_constraintLeft_toRightOf="@+id/matminnen"
         app:layout_constraintTop_toBottomOf="@+id/bistrot"
-        app:srcCompat="@drawable/gothia" />
+        app:srcCompat="@drawable/gothia_logga" />
 
     <ImageButton
         android:id="@+id/picadeli"
@@ -67,7 +67,7 @@
         android:scaleType="fitXY"
         app:layout_constraintLeft_toRightOf="@+id/gothia"
         app:layout_constraintTop_toBottomOf="@+id/lsExpress"
-        app:srcCompat="@drawable/picadelilogga" />
+        app:srcCompat="@drawable/picadeli_logga" />
 
     <ImageButton
         android:id="@+id/lsKitchen"
@@ -75,7 +75,7 @@
         android:layout_height="108dp"
         android:scaleType="fitXY"
         app:layout_constraintTop_toBottomOf="@+id/matminnen"
-        app:srcCompat="@drawable/ls_kitchen"
+        app:srcCompat="@drawable/ls_kitchen_logga"
         tools:layout_editor_absoluteX="16dp" />
 
     <ImageButton
@@ -86,7 +86,7 @@
         android:scaleType="fitXY"
         app:layout_constraintLeft_toRightOf="@+id/lsKitchen"
         app:layout_constraintTop_toBottomOf="@+id/gothia"
-        app:srcCompat="@drawable/pir11" />
+        app:srcCompat="@drawable/pir11_logga" />
 
     <ImageButton
         android:id="@+id/rollinbistros"
@@ -95,7 +95,7 @@
         android:scaleType="fitXY"
         app:layout_constraintLeft_toRightOf="@+id/pir11"
         app:layout_constraintTop_toBottomOf="@+id/picadeli"
-        app:srcCompat="@drawable/rollinbistros"
+        app:srcCompat="@drawable/rollin_bistros_logga"
         tools:layout_editor_absoluteX="269dp"
         tools:layout_editor_absoluteY="205dp" />
 
@@ -105,7 +105,7 @@
         android:layout_height="103dp"
         android:scaleType="fitXY"
         app:layout_constraintTop_toBottomOf="@+id/lsKitchen"
-        app:srcCompat="@drawable/kooperativetlogga"
+        app:srcCompat="@drawable/kooperativet_logga"
              tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="327dp" />
 
