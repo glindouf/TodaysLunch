@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton matMinnen = (ImageButton) findViewById(R.id.matMinnen);
-        matMinnen.setOnClickListener(new View.OnClickListener() {
+        ImageButton matminnen = (ImageButton) findViewById(R.id.matminnen);
+        matminnen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Mat Minnen",restaurants);
+                Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Matminnen",restaurants);;
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);
             }

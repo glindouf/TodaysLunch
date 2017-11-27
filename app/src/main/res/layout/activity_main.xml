@@ -8,17 +8,14 @@
     android:layout_height="match_parent"
     tools:context="com.example.gustav.todayslunch.MainActivity">
 
-
     <ImageButton
         android:id="@+id/mimolett"
         android:layout_width="120dp"
         android:layout_height="59dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/logga_mimolett"
+        app:srcCompat="@drawable/mimolett_logga"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="46dp"
-
-        />
+        tools:layout_editor_absoluteY="46dp" />
 
     <ImageButton
         android:id="@+id/bistrot"
@@ -27,13 +24,13 @@
         android:layout_marginLeft="16dp"
         android:scaleType="fitXY"
         app:layout_constraintLeft_toRightOf="@+id/mimolett"
-        app:srcCompat="@drawable/bistrotlogga"
+        app:srcCompat="@drawable/bistrot_logga"
         tools:layout_editor_absoluteY="26dp" />
 
     <ImageButton
         android:id="@+id/lsExpress"
         android:layout_width="72dp"
-        android:layout_height="103dp"
+        android:layout_height="96dp"
         android:layout_marginLeft="20dp"
         android:scaleType="fitXY"
         app:layout_constraintLeft_toRightOf="@+id/bistrot"
@@ -41,13 +38,75 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <ImageButton
-        android:id="@+id/matMinnen"
+        android:id="@+id/matminnen"
         android:layout_width="110dp"
         android:layout_height="72dp"
         android:layout_marginTop="28dp"
         android:scaleType="fitXY"
         app:layout_constraintTop_toBottomOf="@+id/mimolett"
-        app:srcCompat="@drawable/mat_minnen"
+        app:srcCompat="@drawable/matminnen"
         tools:layout_editor_absoluteX="16dp" />
+
+    <ImageButton
+        android:id="@+id/gothia"
+        android:layout_width="103dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="fitXY"
+        app:layout_constraintLeft_toRightOf="@+id/matminnen"
+        app:layout_constraintTop_toBottomOf="@+id/bistrot"
+        app:srcCompat="@drawable/gothia" />
+
+    <ImageButton
+        android:id="@+id/picadeli"
+        android:layout_width="111dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="fitXY"
+        app:layout_constraintLeft_toRightOf="@+id/gothia"
+        app:layout_constraintTop_toBottomOf="@+id/lsExpress"
+        app:srcCompat="@drawable/picadelilogga" />
+
+    <ImageButton
+        android:id="@+id/lsKitchen"
+        android:layout_width="75dp"
+        android:layout_height="108dp"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@+id/matminnen"
+        app:srcCompat="@drawable/ls_kitchen"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <ImageButton
+        android:id="@+id/pir11"
+        android:layout_width="145dp"
+        android:layout_height="77dp"
+        android:layout_marginLeft="20dp"
+        android:scaleType="fitXY"
+        app:layout_constraintLeft_toRightOf="@+id/lsKitchen"
+        app:layout_constraintTop_toBottomOf="@+id/gothia"
+        app:srcCompat="@drawable/pir11" />
+
+    <ImageButton
+        android:id="@+id/rollinbistros"
+        android:layout_width="126dp"
+        android:layout_height="96dp"
+        android:scaleType="fitXY"
+        app:layout_constraintLeft_toRightOf="@+id/pir11"
+        app:layout_constraintTop_toBottomOf="@+id/picadeli"
+        app:srcCompat="@drawable/rollinbistros"
+        tools:layout_editor_absoluteX="269dp"
+        tools:layout_editor_absoluteY="205dp" />
+
+    <ImageButton
+        android:id="@+id/kooperativet"
+        android:layout_width="123dp"
+        android:layout_height="103dp"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@+id/lsKitchen"
+        app:srcCompat="@drawable/kooperativetlogga"
+             tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="327dp" />
 
 </android.support.constraint.ConstraintLayout>
