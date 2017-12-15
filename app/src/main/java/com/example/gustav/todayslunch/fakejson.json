@@ -1,0 +1,54 @@
+
+/**
+ * Created by Gustav on 2017-11-30.
+ */
+
+{
+"restaurants":[
+  {
+    "name":"Mimolett",
+    "address":"",
+    "tel":"",
+    "lunchserving" :[
+      {
+        "day": "onsdag",
+        "lunchhours": "11.00-14.00",
+        "lunchmenu": [
+          {
+            "name": "Carbonara",
+            "price": 99,
+            "veg": "no"
+          },
+          {
+            "name": "Diavola",
+            "price": 99,
+            "veg": "no"
+          }
+        ]
+      }
+      ]
+    },
+  {
+    "name": "Bistrot",
+    "address": "",
+    "tel": "",
+    "lunchserving": [
+      {
+        "day": "onsdag",
+        "lunchhours": "11.00-13.30",
+        "lunchmenu": [
+          {
+            "name": "Högrevsgryta",
+            "price": 90,
+            "veg": "no"
+          },
+          {
+            "name": "Parmesanpanerad kålrot",
+            "price": 90,
+            "veg": "yes"
+          }
+        ]
+      }
+    ]
+  }
+]}

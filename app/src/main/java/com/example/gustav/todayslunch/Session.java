@@ -9,7 +9,7 @@ public class Session {
     private static Session session;
 
     public Restaurant currentRestaurant;
-    public FakeRestaurantStore store;
+    //public JsonRestaurantStore store;
     // private constructor to prevent other from creating Session objects
     private Session() {
 

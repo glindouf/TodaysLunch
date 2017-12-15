@@ -6,6 +6,6 @@ package com.example.gustav.todayslunch;
 
 public class RestaurantStoreFactory {
     public static RestaurantStore getRestaurantStore(){
-        return FakeRestaurantStore.getInstance();
+        return JsonRestaurantStore.getInstance();
     }
 }

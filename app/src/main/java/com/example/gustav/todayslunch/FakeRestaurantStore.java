@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class FakeRestaurantStore implements RestaurantStore {
     private static FakeRestaurantStore fake;
     private ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
-
+    private FakeRestaurantStore(){};
     static {
         fake = new FakeRestaurantStore();
 
@@ -46,6 +46,7 @@ public class FakeRestaurantStore implements RestaurantStore {
         fake.restaurants.add(new Restaurant("Matminnen","Lindholmsallén 2", "07256357533",matminnenServings ));
 
     }
+
 
     public static FakeRestaurantStore  getInstance(){
         return fake;

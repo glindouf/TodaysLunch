@@ -1,0 +1,41 @@
+{
+  "restaurants": [
+  { "name": "Mimolett" },
+    {"address" : "Lindholmsallen 9"},
+    {"tel": "031224466"}
+    {"lunchserving"}
+
+  ]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[ { "name":"Mimolett", "address":"", "tel":"", "
+" "lunchserving" :[  { "day": "onsdag", "lunchhours": "11.00-14.00", "
+" "lunchmenu": [ { "name": "Carbonara", "price": 99,  "veg": "no"  }, " "
+"            " { "name": "Diavola", "price": 99, "veg": "no" } ] } ] }]
+
+
+
+        ORIGINAL
+private static String jsonString = "[ { \"name\":\"Mimolett\", \"address\":\"\", \"tel\":\"\", "+
+" \"lunchserving\" :[  { \"day\": \"onsdag\", \"lunchhours\": \"11.00-14.00\", " +
+" \"lunchmenu\": [ { \"name\": \"Carbonara\\\", \\\"price\\\": 99,  \\\"veg\\\": \\\"no\\\"  }, \" +\n" +
+"            \" { \\\"name\\\": \\\"Diavola\\\", \\\"price\\\": 99, \\\"veg\\\": \"no\" } ] } ] }]    ";
