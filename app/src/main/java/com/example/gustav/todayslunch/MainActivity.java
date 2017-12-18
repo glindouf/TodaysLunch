@@ -14,12 +14,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     //private TextView mTextMessage;
-     private ArrayList<Restaurant> restaurants = RestaurantStoreFactory.getRestaurantStore().getRestaurants();
+    private ArrayList<Restaurant> restaurants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        restaurants = RestaurantStoreFactory.getRestaurantStore(getApplicationContext()).getRestaurants();
 
         //mTextMessage = (TextView) findViewById(R.id.message);
         ImageButton mimolett = (ImageButton) findViewById(R.id.mimolett);
