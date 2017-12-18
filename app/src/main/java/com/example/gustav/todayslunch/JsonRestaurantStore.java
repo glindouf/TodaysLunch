@@ -25,6 +25,7 @@ public class JsonRestaurantStore implements RestaurantStore{
 
     private static final String LOG_TAG = JsonRestaurantStore.class.getCanonicalName();
     private String jsonURL = "https://raw.githubusercontent.com/glindouf/todayslunch-data/master/lunch.json";
+    private ArrayList<Restaurant> jRestaurants = new ArrayList<>();
 
     private static String jsonString = "[ { \"name\":\"Mimolett\", \"address\":\"Lindholmsallen 61\", \"tel\":\"031-224466\", "+
     " \"lunchserving\" :[  { \"day\": \"onsdag\", \"lunchhours\": \"11.00-14.00\", " +
@@ -42,63 +43,9 @@ public class JsonRestaurantStore implements RestaurantStore{
 
         return jsonString;
     }
-    private ArrayList<Restaurant> parseRestaurants() throws JSONException{
+
+    private ArrayList<Restaurant> parseRestaurants2(JSONArray restaurants) throws JSONException{
         System.out.println("Parsing...");
-//        final JSONObject obj = new JSONObject (jsonString);
-//        final JSONArray restaurants = new JSONArray (jsonString);
-//        final JSONArray restaurants = obj.getJSONArray("restaurants");
-        final JSONArray restaurants = new JSONArray(jsonString); //obj.getJSONArray();
-        final JSONObject mimolett = restaurants.getJSONObject(0);
-        System.out.println("1: " + mimolett);
-//        final JSONObject bistrot = restaurants.getJSONObject(1);
-        final JSONArray lunchservingM = mimolett.getJSONArray("lunchserving");
-//        final JSONArray lunchServingB = bistrot.getJSONArray("lunchServing");
-        final JSONObject servingMimo = lunchservingM.getJSONObject(0);
-        System.out.println("ServingMimo: " + servingMimo);
-//        final JSONObject servingBistrot = lunchServingB.getJSONObject(1);
-        final JSONArray dishesMimo = servingMimo.getJSONArray("lunchmenu");
-        System.out.println("2");
-///        final JSONArray dishesBistrot = servingBistrot.getJSONArray("lunchmenu");
-        final JSONObject carbonara = dishesMimo.getJSONObject(0);
-        final JSONObject diavola = dishesMimo.getJSONObject(1);
-        System.out.println("3");
-
-//        final JSONObject hogrevsgryta = dishesBistrot.getJSONObject(0);
-  //      final JSONObject parmesanbaseradKalrot = dishesBistrot.getJSONObject(1);
-
-        Dish carbonaraJava = new Dish(carbonara.getString("name"),carbonara.getInt("price"),carbonara.getBoolean("veg"));
-        System.out.println(carbonara.get("name"));
-        Dish diavolaJava = new Dish(diavola.getString("name"),diavola.getInt("price"),diavola.getBoolean("veg"));
-//        Dish hogrevsgrytaJava = new Dish(hogrevsgryta.getString("name"),hogrevsgryta.getInt("price"),hogrevsgryta.getBoolean("veg"));
-//        Dish parmesanbaseradKalrotJava = new Dish(parmesanbaseradKalrot.getString("name"),parmesanbaseradKalrot.getInt("price"),parmesanbaseradKalrot.getBoolean("veg"));
-        ArrayList<Dish> mimoDishes =  new ArrayList<Dish>();
-//        ArrayList<Dish> bistrotDishes =  new ArrayList<Dish>();
-        mimoDishes.add(carbonaraJava);
-        mimoDishes.add(diavolaJava);
-
-//        bistrotDishes.add(hogrevsgrytaJava);
-
-        LunchServing mimoServing = new LunchServing(servingMimo.getString("day"),servingMimo.getString("lunchhours"),mimoDishes);
-//        LunchServing bistrotServing = new LunchServing(servingBistrot.getString("day"),servingBistrot.getString("lunchhours"),bistrotDishes);
-        ArrayList<LunchServing> weekMenuMimo = new ArrayList<LunchServing>();
-        ArrayList<LunchServing> weekMenuBistrot = new ArrayList<LunchServing>();
-        weekMenuMimo.add(mimoServing);
-
-        Restaurant mimolettJava = new Restaurant(mimolett.getString("name"),mimolett.getString("address"),mimolett.getString("tel"),weekMenuMimo);
-//        Restaurant bistrotJava = new Restaurant(bistrot.getString("name"),bistrot.getString("address"),bistrot.getString("tel"),weekMenuBistrot);
-        ArrayList<Restaurant> restaurantsJava = new ArrayList<>();
-        restaurantsJava.add(mimolettJava);
-//        restaurantsJava.add(bistrotJava);
-
-        return restaurantsJava;
-
-//        return null;
-    }
-
-    private ArrayList<Restaurant> parseRestaurants2() throws JSONException{
-        System.out.println("Parsing...");
-        ArrayList<Restaurant> jRestaurants = new ArrayList<>();
-        final JSONArray restaurants = new JSONArray(jsonString); //obj.getJSONArray();
         for(int i = 0; i < restaurants.length();i++){
             JSONObject restaurant = restaurants.getJSONObject(i);
             JSONArray lunchservings = restaurant.getJSONArray("lunchserving");
@@ -122,23 +69,22 @@ public class JsonRestaurantStore implements RestaurantStore{
         return jRestaurants;
     }
 
-    public ArrayList<Restaurant> getRestaurants(){
+   /* public ArrayList<Restaurant> getRestaurants(){
         System.out.println("Getting restaurants....");
-        getLunch();  // fetches JSON from github
-        ArrayList<Restaurant> restaurants = null;
+        setJson();  // fetches JSON from github
         try {
-            restaurants = parseRestaurants2();
-        } catch(JSONException e){
+            setJson();
+        } catch(Exception e){
             e.printStackTrace();
             System.out.println(e);
             System.out.println("Error!!!!!!!!!!!");
         }
-        return restaurants;
-    }
+        return jRestaurants;
+    }*/
 
     // The code below is "slightly" (nudge nudge) based on:
     //   https://developer.android.com/training/volley/request.html
-    private void getLunch() {
+    public ArrayList<Restaurant> getRestaurants() {
 
         Log.d(LOG_TAG, "got context????: " + context );
         Log.d(LOG_TAG, "got context????: " + context.getCacheDir() );
@@ -152,11 +98,17 @@ public class JsonRestaurantStore implements RestaurantStore{
 
                     @Override
                     public void onResponse(JSONArray array) {
-                        Log.d(LOG_TAG, "hurra, ....");
-/*                        members = jsonToMembers(array);
+                        Log.d(LOG_TAG, "hurra, .... " + array );
+                        try {
+                            jRestaurants = parseRestaurants2(array);
+                        }catch (JSONException e){
+                            System.out.println(e);
+                        }
+                        /*
+                        members = jsonToMembers(array);
                         resetListView();
                         ActivitySwitcher.showToast(me, "Members updated");
-*/
+                        */
                     }
                 }, new Response.ErrorListener() {
 
@@ -168,7 +120,7 @@ public class JsonRestaurantStore implements RestaurantStore{
 
         // Add the request to the RequestQueue.
         queue.add(jsonArrayRequest);
-
+        return jRestaurants;
     }
 
     public static JsonRestaurantStore getInstance(Context c){
@@ -177,5 +129,3 @@ public class JsonRestaurantStore implements RestaurantStore{
         return jsonStore;
     }
 }
-
-
