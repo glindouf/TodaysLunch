@@ -45,12 +45,13 @@ public class JsonRestaurantStore implements RestaurantStore{
     }
 
     private ArrayList<Restaurant> parseRestaurants2(JSONArray restaurants) throws JSONException{
-        System.out.println("Parsing...");
+        Log.d(LOG_TAG, "Parsing...  rests: " + restaurants.length());
         for(int i = 0; i < restaurants.length();i++){
+            Log.d(LOG_TAG, "Från parsening " + i);
             JSONObject restaurant = restaurants.getJSONObject(i);
             JSONArray lunchservings = restaurant.getJSONArray("lunchserving");
             ArrayList<LunchServing> jLunchServings = new ArrayList<LunchServing>();
-            for(int j = 0; i < lunchservings.length();i++){
+            for(int j = 0; j < lunchservings.length();j++){
                 JSONObject lunchserving = lunchservings.getJSONObject(j);
                 JSONArray dishes  = lunchserving.getJSONArray("lunchmenu");
                 ArrayList<Dish> jDishes =  new ArrayList<Dish>();
@@ -64,7 +65,9 @@ public class JsonRestaurantStore implements RestaurantStore{
 
             }
             Restaurant jRestaurant = new Restaurant(restaurant.getString("name"),restaurant.getString("address"),restaurant.getString("tel"),jLunchServings);
+            Log.d(LOG_TAG, " restaurant: " + jRestaurant);
             jRestaurants.add(jRestaurant);
+            Log.d(LOG_TAG, " restaurants size: " + jRestaurants.size() + "  i: " + i);
         }
         return jRestaurants;
     }
