@@ -10,13 +10,18 @@ public class Restaurant {
     private String name;
     private String address;
     private String tel;
-    private ArrayList<LunchServing> weekMenu;
+    private String day;
+    private String lunchHours;
+    private ArrayList<Dish> lunchMenu;
 
-    public Restaurant(String name, String adress, String tel, ArrayList<LunchServing> weekMenu){
+    public Restaurant(String name, String adress,
+                      String tel, String day, String lunchHours, ArrayList<Dish> lunchMenu){
         this.name = name;
         this.address = adress;
         this.tel = tel;
-        this.weekMenu = weekMenu;
+        this.day = day;
+        this.lunchHours = lunchHours;
+        this.lunchMenu = lunchMenu;
     }
     public String name() {
         return name;
@@ -29,8 +34,16 @@ public class Restaurant {
         return tel;
     }
 
-    public ArrayList<LunchServing> weekMenu(){
-        return weekMenu;
+    public ArrayList<Dish> lunchMenu(){
+        return lunchMenu;
+    }
+
+    public String day(){
+        return day;
+    }
+
+    public String lunchHours(){
+        return lunchHours;
     }
 
 }

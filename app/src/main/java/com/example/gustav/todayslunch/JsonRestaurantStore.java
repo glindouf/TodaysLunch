@@ -49,25 +49,19 @@ public class JsonRestaurantStore implements RestaurantStore{
         for(int i = 0; i < restaurants.length();i++){
             Log.d(LOG_TAG, "Från parsening " + i);
             JSONObject restaurant = restaurants.getJSONObject(i);
-            JSONArray lunchservings = restaurant.getJSONArray("lunchserving");
-            ArrayList<LunchServing> jLunchServings = new ArrayList<LunchServing>();
-            for(int j = 0; j < lunchservings.length();j++){
-                JSONObject lunchserving = lunchservings.getJSONObject(j);
-                JSONArray dishes  = lunchserving.getJSONArray("lunchmenu");
-                ArrayList<Dish> jDishes =  new ArrayList<Dish>();
-                LunchServing jLunchServing = new LunchServing(lunchserving.getString("day"),lunchserving.getString("lunchhours"),jDishes);
-                jLunchServings.add(jLunchServing);
-                for(int k = 0; k < dishes.length();k++){
-                    JSONObject dish = dishes.getJSONObject(k);
-                    Dish jDish = new Dish(dish.getString("name"),dish.getInt("price"),dish.getBoolean("veg"));
-                    jDishes.add(jDish);
-                }
-
+            JSONArray dishes  = restaurant.getJSONArray("lunchmenu");
+            ArrayList<Dish> jDishes =  new ArrayList<Dish>();
+            for(int j = 0; j < dishes.length();j++){
+                JSONObject dish = dishes.getJSONObject(j);
+                Dish jDish = new Dish(dish.getString("name"),dish.getInt("price"),dish.getBoolean("veg"));
+                jDishes.add(jDish);
             }
-            Restaurant jRestaurant = new Restaurant(restaurant.getString("name"),restaurant.getString("address"),restaurant.getString("tel"),jLunchServings);
+            Restaurant jRestaurant = new Restaurant(restaurant.getString("name"),restaurant.getString("address"),restaurant.getString("tel"),
+                                                    restaurant.getString("day"),restaurant.getString("lunchhours"),jDishes);
             Log.d(LOG_TAG, " restaurant: " + jRestaurant);
             jRestaurants.add(jRestaurant);
             Log.d(LOG_TAG, " restaurants size: " + jRestaurants.size() + "  i: " + i);
+
         }
         return jRestaurants;
     }
