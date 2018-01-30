@@ -53,7 +53,7 @@ public class JsonRestaurantStore implements RestaurantStore{
             ArrayList<Dish> jDishes =  new ArrayList<Dish>();
             for(int j = 0; j < dishes.length();j++){
                 JSONObject dish = dishes.getJSONObject(j);
-                Dish jDish = new Dish(dish.getString("name"),dish.getInt("price"),dish.getBoolean("veg"));
+                Dish jDish = new Dish(dish.getString("name"),dish.getInt("price"),dish.getString("dishType"));
                 jDishes.add(jDish);
             }
             Restaurant jRestaurant = new Restaurant(restaurant.getString("name"),restaurant.getString("address"),restaurant.getString("tel"),
