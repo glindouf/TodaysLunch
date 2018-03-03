@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton bistrot = (ImageButton) findViewById(R.id.bistrot);
+       /* ImageButton bistrot = (ImageButton) findViewById(R.id.bistrot);
         bistrot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Bistrot",restaurants);
-                Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
+                /Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);
             }
         });
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);
             }
-        });
+        }); */
     }
 
 }
