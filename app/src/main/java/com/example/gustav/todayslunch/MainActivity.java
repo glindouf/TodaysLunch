@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Mimolett",restaurants);
-                System.out.println("Mimolett");
                 System.out.println(Session.getInstance().currentRestaurant.name());
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);

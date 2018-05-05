@@ -24,14 +24,10 @@ import java.util.ArrayList;
 public class JsonRestaurantStore implements RestaurantStore{
 
     private static final String LOG_TAG = JsonRestaurantStore.class.getCanonicalName();
-    private String jsonURL = "https://raw.githubusercontent.com/glindouf/todayslunch-data/master/lunch.json";
+    private String jsonURL = "https://raw.githubusercontent.com/Farrigan/todayslunch-data/master/rest.json";
     private ArrayList<Restaurant> jRestaurants = new ArrayList<>();
 
-    private static String jsonString = "[ { \"name\":\"Mimolett\", \"address\":\"Lindholmsallen 61\", \"tel\":\"031-224466\", "+
-    " \"lunchserving\" :[  { \"day\": \"onsdag\", \"lunchhours\": \"11.00-14.00\", " +
-    " \"lunchmenu\": [ { \"name\": \"Carbonara\", \"price\": 99,  \"dishtype\": \"pasta\"  }, " +
-            "             { \"name\": \"Diavola\", \"price\": 99, \"dishtype\": \"pasta\" } ] } ] }]    ";
-    //, \n        { \n            \"name\": \"Bistrot\", \n                \"address\": \"\", \n                \"tel\": \"\", \n                \"lunchserving\": [ \n            { \n                \"day\": \"onsdag\", \n                    \"lunchhours\": \"11.00-13.30\", \"lunchmenu\": [  { \"name\": \"Högrevsgryta\",  \"price\": 90,   \"veg\": \"no\"   }, {    \"name\": \"Parmesanpanerad kålrot\",  \"price\": 90,   \"veg\": \"yes\"  } ]} ]  } ]}";
+
     private static JsonRestaurantStore jsonStore;
     private Context context;
     private JsonRestaurantStore(Context c){
@@ -39,10 +35,6 @@ public class JsonRestaurantStore implements RestaurantStore{
         this.context = c;
         Log.d(LOG_TAG, "got context: " + context );
     };
-    public String getRestaurantJSON() {
-
-        return jsonString;
-    }
 
     private ArrayList<Restaurant> parseRestaurants2(JSONArray restaurants) throws JSONException{
         Log.d(LOG_TAG, "Parsing...  rests: " + restaurants.length());
@@ -53,7 +45,7 @@ public class JsonRestaurantStore implements RestaurantStore{
             ArrayList<Dish> jDishes =  new ArrayList<Dish>();
             for(int j = 0; j < dishes.length();j++){
                 JSONObject dish = dishes.getJSONObject(j);
-                Dish jDish = new Dish(dish.getString("name"),dish.getInt("price"),dish.getBoolean("veg"));
+                Dish jDish = new Dish(dish.getString("name"),dish.getInt("price"),dish.getString("dishtype"));
                 jDishes.add(jDish);
             }
             Restaurant jRestaurant = new Restaurant(restaurant.getString("name"),restaurant.getString("address"),restaurant.getString("tel"),

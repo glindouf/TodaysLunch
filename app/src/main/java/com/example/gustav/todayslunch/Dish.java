@@ -7,21 +7,18 @@ package com.example.gustav.todayslunch;
 public class Dish {
     private String name;
     private int price;
-    private Boolean veg;
+    private String dishtype;
 
-    public Dish(String name, int price, Boolean veg){
+    public Dish(String name, int price, String dishtype){
         this.name = name;
         this.price = price;
-        this.veg = veg;
+        this.dishtype = dishtype;
     }
 
     @Override
     public String toString() {
-        String veg = "no";
-        if (this.veg) {
-            veg = "yes";
-        }
-        return name + " " + price + "kr vegetarian: " + veg;
+
+        return name + " " + price + "kr " + dishtype;
     }
 
 
