@@ -10,7 +10,7 @@ public class Util {
 
     public static ArrayList<String> convertRestaurantInfo(Restaurant restaurant){
         ArrayList<String> menuItems = new ArrayList<String>();
-        String title = restaurant.day() + " " + restaurant.lunchHours();
+        String title = restaurant.name() + " " + restaurant.lunchHours();
         menuItems.add(title);
         ArrayList<Dish> lunchMenu = restaurant.lunchMenu();
         for(Dish d : lunchMenu) {

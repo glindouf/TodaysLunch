@@ -49,7 +49,7 @@ public class JsonRestaurantStore implements RestaurantStore{
                 jDishes.add(jDish);
             }
             Restaurant jRestaurant = new Restaurant(restaurant.getString("name"),restaurant.getString("address"),restaurant.getString("tel"),
-                                                    restaurant.getString("day"),restaurant.getString("lunchhours"),jDishes);
+                                                    restaurant.getString("lunchhours"),jDishes);
             Log.d(LOG_TAG, " restaurant: " + jRestaurant);
             jRestaurants.add(jRestaurant);
             Log.d(LOG_TAG, " restaurants size: " + jRestaurants.size() + "  i: " + i);
