@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     //private TextView mTextMessage;
+    //test
     private ArrayList<Restaurant> restaurants;
 
     @Override
