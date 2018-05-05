@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 
 public class Util {
-
+//
     public static ArrayList<String> convertRestaurantInfo(Restaurant restaurant){
         ArrayList<String> menuItems = new ArrayList<String>();
         String title = restaurant.name() + " " + restaurant.lunchHours();
