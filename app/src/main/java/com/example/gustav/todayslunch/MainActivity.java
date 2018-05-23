@@ -11,11 +11,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     //private TextView mTextMessage;
     //test
-    private ArrayList<Restaurant> restaurants;
+    private HashMap<String,Restaurant> restaurants; //ändra till hashmap
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
         mimolett.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Session.getInstance().currentRestaurant = Util.getRestaurantInfo("Mimolett",restaurants);
+                Session.getInstance().currentRestaurant =  restaurants.get("Mimolett");
+                        //Util.getRestaurantInfo("Mimolett",restaurants);
                 System.out.println(Session.getInstance().currentRestaurant.name());
                 Intent myIntent = new Intent(MainActivity.this, LunchActivity.class);
                 MainActivity.this.startActivity(myIntent);

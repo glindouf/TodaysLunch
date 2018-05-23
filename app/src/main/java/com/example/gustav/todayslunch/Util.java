@@ -19,7 +19,7 @@ public class Util {
         return menuItems;
     }
 
-    public static Restaurant getRestaurantInfo(String restaurant, ArrayList<Restaurant> restaurants) {
+    /*public static Restaurant getRestaurantInfo(String restaurant, ArrayList<Restaurant> restaurants) {
         Restaurant rest = null;
         for(Restaurant r :restaurants ){
             if(r.name().equals(restaurant)){
@@ -27,7 +27,7 @@ public class Util {
             }
         }
         return rest;
-    }
+    }*/
 
 
 }

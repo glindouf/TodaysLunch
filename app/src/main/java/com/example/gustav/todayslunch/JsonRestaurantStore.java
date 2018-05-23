@@ -1,6 +1,5 @@
 package com.example.gustav.todayslunch;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.util.Log;
 
@@ -14,6 +13,7 @@ import com.android.volley.Request;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.util.HashMap;
 
 import java.util.ArrayList;
 
@@ -25,8 +25,8 @@ public class JsonRestaurantStore implements RestaurantStore{
 
     private static final String LOG_TAG = JsonRestaurantStore.class.getCanonicalName();
     private String jsonURL = "https://raw.githubusercontent.com/Farrigan/todayslunch-data/master/rest.json";
-    private ArrayList<Restaurant> jRestaurants = new ArrayList<>();
-
+    private HashMap<String, Restaurant> jRestaurants = new HashMap<String,Restaurant>();
+    // HashMap<Integer, String> hmap = new HashMap<Integer, String>();
 
     private static JsonRestaurantStore jsonStore;
     private Context context;
@@ -36,7 +36,8 @@ public class JsonRestaurantStore implements RestaurantStore{
         Log.d(LOG_TAG, "got context: " + context );
     };
 
-    private ArrayList<Restaurant> parseRestaurants2(JSONArray restaurants) throws JSONException{
+    private HashMap<String, Restaurant> parseRestaurants(JSONArray restaurants) throws JSONException{ //ändra till hashmap
+        HashMap<String, Restaurant> restMap = new HashMap<String,Restaurant>();
         Log.d(LOG_TAG, "Parsing...  rests: " + restaurants.length());
         for(int i = 0; i < restaurants.length();i++){
             Log.d(LOG_TAG, "Från parsening " + i);
@@ -51,11 +52,11 @@ public class JsonRestaurantStore implements RestaurantStore{
             Restaurant jRestaurant = new Restaurant(restaurant.getString("name"),restaurant.getString("address"),restaurant.getString("tel"),
                                                     restaurant.getString("lunchhours"),jDishes);
             Log.d(LOG_TAG, " restaurant: " + jRestaurant);
-            jRestaurants.add(jRestaurant);
+            jRestaurants.put(jRestaurant.name(),jRestaurant);
             Log.d(LOG_TAG, " restaurants size: " + jRestaurants.size() + "  i: " + i);
 
         }
-        return jRestaurants;
+        return restMap;
     }
 
    /* public ArrayList<Restaurant> getRestaurants(){
@@ -73,7 +74,7 @@ public class JsonRestaurantStore implements RestaurantStore{
 
     // The code below is "slightly" (nudge nudge) based on:
     //   https://developer.android.com/training/volley/request.html
-    public ArrayList<Restaurant> getRestaurants() {
+    public HashMap<String, Restaurant> getRestaurants() { //ändra till hashmap
 
         Log.d(LOG_TAG, "got context????: " + context );
         Log.d(LOG_TAG, "got context????: " + context.getCacheDir() );
@@ -89,7 +90,7 @@ public class JsonRestaurantStore implements RestaurantStore{
                     public void onResponse(JSONArray array) {
                         Log.d(LOG_TAG, "hurra, .... " + array );
                         try {
-                            jRestaurants = parseRestaurants2(array);
+                            jRestaurants = parseRestaurants(array); //ta bort tvåan
                         }catch (JSONException e){
                             System.out.println(e);
                         }
